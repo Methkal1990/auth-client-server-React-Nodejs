@@ -1,7 +1,9 @@
-require('express-async-errors')
+require('express-async-errors');
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const app = express();
 const router = require('./router');
 const error = require('./middlewares/error');
@@ -16,6 +18,7 @@ mongoose
 
 app.use(express.json());
 app.use(morgan('combined'));
+app.use(cors());
 
 app.use(router);
 
